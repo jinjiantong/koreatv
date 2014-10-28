@@ -1,0 +1,44 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+#define BASEURL @"http://video.5211game.com/main/index.aspx"
+#define BASETWOURL@"http://video.5211game.com/main/"
+//#define YULE @"http://www.imkorean.cc/programe_list.php?category=%EC%97%B0%EC%98%88%ED%94%84%EB%A1%9C"
+
+//Document路径
+#define DOCUMENT_PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+//Caches路径
+#define CACHES_PATH [NSString stringWithFormat:@"%@/Library/Caches",NSHomeDirectory()]
+#define IMAGE_CASH_TIME 864000
+
+//注册通知
+#define ADD_OBSERVER(target,_selector,_name,_obj) [[NSNotificationCenter defaultCenter] addObserver: target selector:_selector name: _name object: _obj]
+//发送通知
+#define POST_NOTIFICATION(_notificationName,_obj,_userInfo) [[NSNotificationCenter defaultCenter] postNotificationName:_notificationName object:_obj userInfo:_userInfo]
+//移除对象所有通知
+#define REMOVE_ALL_OBSERVER(_id_) [[NSNotificationCenter defaultCenter] removeObserver:_id_]
+//移除对象指定通知
+#define REMOVE_OBSERVER(_id_,_name_,_obj_) [[NSNotificationCenter defaultCenter] removeObserver:_id_ name:_name_ object:_obj_];
+
+//NSUserDefaults
+//同步
+#define USER_DEFAULT_SYNCHRONIZE [[NSUserDefaults standardUserDefaults] synchronize]
+//set
+#define USER_DEFAULT_SET(_obj_,_key_) [[NSUserDefaults standardUserDefaults] setObject:_obj_ forKey:_key_];USER_DEFAULT_SYNCHRONIZE
+//get
+#define USER_DEFAULT_GET(_key_) [[NSUserDefaults standardUserDefaults] objectForKey:_key_]
+//remove
+#define USER_DEFAULT_REMOVE(_key_) [[NSUserDefaults standardUserDefaults] removeObjectForKey:_key_];USER_DEFAULT_SYNCHRONIZE
